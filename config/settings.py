@@ -30,8 +30,11 @@ SECRET_KEY = 'django-insecure-0nk^y$rm=#nwyw8hqpw9plciby!8*9-@_6usp-!0t1@7%tb*n5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    ".onrender.com",
+]
 
 # Application definition
 
@@ -52,6 +55,8 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://nukia-five.vercel.app",
+
 ]
 
 MIDDLEWARE = [
