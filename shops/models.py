@@ -49,10 +49,21 @@ class Product(models.Model):
 
     product_name = models.CharField(max_length=200)
 
-    category = models.CharField(max_length=100)
+    category = models.CharField(
+        max_length=100,
+        blank=True
+    )
+
+    # NEW PRODUCT IMAGE
+    product_image = models.ImageField(
+        upload_to='products/',
+        blank=True,
+        null=True
+    )
 
     keywords = models.TextField(
-        help_text="Separate keywords with commas"
+        help_text="Separate keywords with commas",
+        blank=True
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

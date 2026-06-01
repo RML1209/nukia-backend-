@@ -5,9 +5,7 @@ from .views import (
     ShopSearchAPIView
 )
 
-
 urlpatterns = [
-
     path(
         'shops/',
         ShopListAPIView.as_view(),
@@ -19,5 +17,4 @@ urlpatterns = [
         ShopSearchAPIView.as_view(),
         name='shop-search'
     ),
-
 ]
