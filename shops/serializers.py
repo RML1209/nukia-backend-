@@ -18,6 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "shop",
             "product_name",
             "category",
+            "product_price",  # NEW
             "keywords",
             "product_image",
             "created_at",

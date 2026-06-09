@@ -46,7 +46,6 @@ class ShopAdmin(admin.ModelAdmin):
 
     inlines = [ProductInline]
 
-
 # =========================
 # PRODUCT ADMIN
 # =========================
@@ -59,6 +58,7 @@ class ProductAdmin(admin.ModelAdmin):
         "shop",
         "category",
         "product_image",
+        "product_price",
         "created_at",
     )
 
@@ -75,6 +75,7 @@ class ProductAdmin(admin.ModelAdmin):
         "shop",
         "product_name",
         "category",
+        "product_price",
         "keywords",
         "product_image",
     )
