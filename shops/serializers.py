@@ -30,7 +30,13 @@ class FeaturedCategorySerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
 
+    shop_name = serializers.CharField(
+    source="shop.name",
+    read_only=True
+)
+
     product_image = serializers.SerializerMethodField()
+    
 
     featured_categories = FeaturedCategorySerializer(
         many=True,
@@ -46,6 +52,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "product_name",
             "category",
             "product_price",
+            "shop_name",
             "keywords",
             "product_image",
             "featured_categories",
