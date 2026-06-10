@@ -1,6 +1,27 @@
 from rest_framework import serializers
 
-from .models import Shop, Product
+from .models import (
+    Shop,
+    Product,
+    FeaturedCategory
+)
+
+
+# =========================
+# FEATURED CATEGORY SERIALIZER
+# =========================
+
+class FeaturedCategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FeaturedCategory
+
+        fields = [
+            "id",
+            "name",
+            "slug",
+            "description",
+        ]
 
 
 # =========================
@@ -11,16 +32,23 @@ class ProductSerializer(serializers.ModelSerializer):
 
     product_image = serializers.SerializerMethodField()
 
+    featured_categories = FeaturedCategorySerializer(
+        many=True,
+        read_only=True
+    )
+
     class Meta:
         model = Product
+
         fields = [
             "id",
             "shop",
             "product_name",
             "category",
-            "product_price",  # NEW
+            "product_price",
             "keywords",
             "product_image",
+            "featured_categories",
             "created_at",
         ]
 
@@ -28,10 +56,12 @@ class ProductSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
 
         if obj.product_image:
+
             if request:
                 return request.build_absolute_uri(
                     obj.product_image.url
                 )
+
             return obj.product_image.url
 
         return None
@@ -65,18 +95,22 @@ class ShopSerializer(serializers.ModelSerializer):
         ]
 
     def get_profile_image(self, obj):
+
         request = self.context.get("request")
 
         if obj.profile_image:
+
             if request:
                 return request.build_absolute_uri(
                     obj.profile_image.url
                 )
+
             return obj.profile_image.url
 
         return None
 
     def get_products(self, obj):
+
         serializer = ProductSerializer(
             obj.products.all(),
             many=True,

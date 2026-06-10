@@ -2,19 +2,42 @@ from django.urls import path
 
 from .views import (
     ShopListAPIView,
-    ShopSearchAPIView
+    ShopSearchAPIView,
+    FeaturedCategoryListAPIView,
+    ProductsByCategoryAPIView,
 )
 
 urlpatterns = [
+
+    # =========================
+    # SHOPS
+    # =========================
+
     path(
-        'shops/',
+        "shops/",
         ShopListAPIView.as_view(),
-        name='shop-list'
+        name="shop-list",
     ),
 
     path(
-        'shops/search/',
+        "shops/search/",
         ShopSearchAPIView.as_view(),
-        name='shop-search'
+        name="shop-search",
+    ),
+
+    # =========================
+    # FEATURED CATEGORIES
+    # =========================
+
+    path(
+        "categories/",
+        FeaturedCategoryListAPIView.as_view(),
+        name="category-list",
+    ),
+
+    path(
+        "categories/<slug:slug>/",
+        ProductsByCategoryAPIView.as_view(),
+        name="products-by-category",
     ),
 ]
