@@ -84,7 +84,28 @@ class FeaturedCategoryListAPIView(
     serializer_class = (
         FeaturedCategorySerializer
     )
+# =========================
+# SHOP DETAIL API
+# =========================
 
+class ShopDetailAPIView(
+    generics.RetrieveAPIView
+):
+
+    queryset = Shop.objects.prefetch_related(
+        "products",
+        "products__featured_categories"
+    )
+
+    serializer_class = ShopSerializer
+
+    def get_serializer_context(self):
+
+        context = super().get_serializer_context()
+
+        context["request"] = self.request
+
+        return context
 
 # =========================
 # PRODUCTS BY CATEGORY API
