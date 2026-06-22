@@ -25,6 +25,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "https://nukia-backend-me3q.onrender.com",
+    ".onrender.com",
     "www.nukia.online",
     "nukia.online",
 ]
