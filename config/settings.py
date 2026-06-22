@@ -24,7 +24,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "nukia-backend-me3q.onrender.com",
+    "https://nukia-backend-me3q.onrender.com",
     "www.nukia.online",
     "nukia.online",
 ]
